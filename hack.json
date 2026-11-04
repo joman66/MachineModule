@@ -2,7 +2,7 @@
   "id": "machinemodule",
   "name": "MachineModule",
   "description": "A drum machine in the style of the Elektron Machinedrum SPS-1UW, for Push 3. 16 tracks of synthesized drum machines (TRX, EFM, PI, GND) and UserWave samples, 16-track pattern sequencer with parameter locks, accent, swing and slide, per-track effects and LFO, global delay, reverb, compressor and EQ, kits, patterns and songs. An app of Push Hack Home (Shift + Help): its screen, pads and buttons work like the hardware's. The web page loads WAV samples, edits sounds and the sequence, and creates its tracks in Live. Renders audio into push-audio-loopback's virtual card and takes notes, CCs and clock on the MIDI port MachineModule MIDI In. Needs push-audio-loopback, push-manager + push-display, and the PushHack Remote Script (for the tracks). Not affiliated with Elektron.",
-  "version": "0.2.0-alpha",
+  "version": "0.2.1-alpha",
   "author": "joman66",
   "binary": "machinemodule",
   "port": 7710,
