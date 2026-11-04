@@ -14,7 +14,6 @@ MachineModule: a [push-hack](https://github.com/federico-pepe/ableton-push-hack)
 | `ui/` | Front panel: pads/buttons/encoders in, 960x160 frame and LED map out. Talks to the host through the `Host` interface. | no |
 | `store/` | config, project.json, waves as WAV files, imports folder, autosave | no |
 | `midimap/` | what notes/CCs mean | no |
-| `hwparams/` | parses Live's negotiated hw_params | no |
 | `livelink/` | PushHack Remote Script client (`track.ensure`, `transport.get`) | no (Caller is injectable) |
 | `livesync/` | polls Live's transport (Remote Script) and joins/stops the sequencer on a change while Sync is MIDI | no |
 | `cmd/mmrender/` | renders a pattern to WAV | no |

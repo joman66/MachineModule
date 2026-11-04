@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"time"
 
-	"machinemodule/hwparams"
+	"github.com/federico-pepe/ableton-push-hack/core/alsapcm"
 )
 
 const (
@@ -32,7 +32,7 @@ func (s *session) close() {
 	<-s.done
 }
 
-func (a *app) startSession(hp hwparams.Params, device string) (*session, error) {
+func (a *app) startSession(hp alsapcm.HWParams, device string) (*session, error) {
 	a.eng.SetSampleRate(float64(hp.Rate))
 	pcm, err := openPCM(device, hp.Channels, hp.Rate, hp.Period, hp.Buffer)
 	if err != nil {
@@ -112,7 +112,7 @@ func toS16(v float32) int16 {
 // the chosen device changes. It returns when shutdown closes.
 func (a *app) superviseAudio(shutdown <-chan struct{}) {
 	var sess *session
-	var last hwparams.Params
+	var last alsapcm.HWParams
 	var lastDev string
 	stop := func() {
 		if sess != nil {
@@ -172,7 +172,7 @@ func (a *app) superviseAudio(shutdown <-chan struct{}) {
 			note("audio mixer gone; playing to the card directly")
 		}
 		wait := pollWaiting
-		hp, ok, err := hwparams.Read(cardID)
+		hp, ok, err := alsapcm.ReadHWParams(cardID)
 		switch {
 		case err != nil:
 			log.Printf("hw_params: %v", err)
