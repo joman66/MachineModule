@@ -10,7 +10,7 @@ Not affiliated with or endorsed by Elektron. The sound engine is original; only 
 - **UserWave samples**: 64 slots, loaded from WAV files (Push SYSTEM page or the web page). Start, end, loop, reverse, pitch and decay per hit.
 - **Sound shaping**: 8 synth parameters per machine, an effects page (amplitude modulation, EQ, filter, sample-rate reduction), a routing page (delay and reverb sends, pan, volume) and one LFO per track that can modulate any parameter.
 - **Global effects** in every kit: delay, reverb, compressor, master EQ, master volume.
-- **Sequencer**: 128 patterns (banks A-H, 16 each), 2-64 steps, pattern scale (1/8x to 2x), swing, accent, slide, **parameter locks** per step, real-time recording, copy/paste/clear, tap tempo, internal clock or MIDI clock.
+- **Sequencer**: 128 patterns (banks A-H, 16 each), 2-64 steps, pattern scale (1/8x to 2x), swing, accent, slide, **parameter locks** per step, real-time recording, copy/paste/clear, tap tempo, internal clock or MIDI clock (with MIDI sync Live is the only transport: Play and Stop in the module do nothing).
 - **Kits** (64) and **songs** (16 songs of pattern rows with repeats and a loop point).
 - **Project saving**: patterns, kits, songs, tempo and samples are saved automatically.
 
