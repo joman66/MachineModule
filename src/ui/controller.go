@@ -321,7 +321,9 @@ func (c *Controller) Button(cc byte, down bool) {
 	case cc >= push3.CCScene14 && cc <= push3.CCScene132t:
 		c.bank = 7 - int(cc-push3.CCScene14) // top button is bank A
 	case cc == push3.CCPlay:
-		if c.shift {
+		if !c.eng.LocalTransport() {
+			c.say("PLAY FOLLOWS LIVE (SYNC MIDI)")
+		} else if c.shift {
 			c.eng.Stop()
 			c.eng.Play()
 		} else {
