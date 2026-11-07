@@ -62,7 +62,9 @@ Open it from the Push Hack menu. It has the step grid, every parameter of every 
 
 ## Audio output
 
-MachineModule sends its audio to the audio mixer of push-audio-loopback when it runs, so it can play together with other audio hacks such as Braids. Choose the channel pair on the web page (*Channel pair*). In Live, enable that pair on the input of the Push Hack Virtual Audio card and give an audio track that input (the *Create tracks in Live* button does this). Without the mixer, MachineModule writes to the card directly, the *Audio output* list is active, and no other audio hack can play at the same time.
+By default push-audio-loopback sends MachineModule to Live over Ableton Link Audio. In Live, turn on Link and Link Audio, give an audio track the input type *PushHack*, pick the channel *MachineModule* and set Monitor to In. The channel pair below applies to the virtual card mode only. The *Create tracks in Live* button makes its track on the virtual card, so in Link mode set the input by hand. After a restart of push-audio-loopback, press play in Live to bring the sequencer back in time.
+
+Virtual card mode: MachineModule sends its audio to the audio mixer of push-audio-loopback when it runs, so it can play together with other audio hacks such as Braids. Choose the channel pair on the web page (*Channel pair*). In Live, enable that pair on the input of the Push Hack Virtual Audio card and give an audio track that input (the *Create tracks in Live* button does this). Without the mixer, MachineModule writes to the card directly, the *Audio output* list is active, and no other audio hack can play at the same time.
 
 ## MIDI
 
