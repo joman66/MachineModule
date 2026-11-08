@@ -14,6 +14,7 @@ h1{font-size:15px;margin:0;letter-spacing:.08em}
 h1 b{color:var(--accent)}
 main{padding:16px;display:grid;gap:16px;max-width:1200px;margin:0 auto}
 section{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px}
+[hidden]{display:none!important}
 h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:0 0 10px}
 a{color:inherit;text-decoration:none}
 button,select,input{font:inherit;color:inherit}
@@ -95,13 +96,14 @@ pre{white-space:pre-wrap;margin:6px 0 0;font-size:12px;color:var(--dim)}
 </section>
 <section><h2>Setup</h2>
   <div class="row">
-    <button id="mktracks">Create tracks in Live</button>
-    <label>Audio output <select id="audiodev"></select></label>
-    <label>Channel pair <select id="audiopair"></select></label>
+    <button id="mktracks" class="aud">Create tracks in Live</button>
+    <label class="aud">Audio output <select id="audiodev"></select></label>
+    <label class="aud">Channel pair <select id="audiopair"></select></label>
     <label>External MIDI channel <select id="midich"></select></label>
     <button id="cfg">Apply</button>
   </div>
-  <p class="note" id="busnote"></p>
+  <p class="note aud" id="busnote"></p>
+  <p class="note" id="linknote" hidden>Audio: MachineModule sends its sound to Live over Link Audio. In Live, turn on Link and Link Audio, then give an audio track the input PushHack and pick the MachineModule channel. No other audio setting is needed.</p>
   <pre id="msg"></pre>
   <div class="row" style="margin-top:10px">
     <a href="/api/project"><button>Download project</button></a>
@@ -172,6 +174,7 @@ function draw(){
       const b=document.createElement('button');b.textContent='x';b.title='Clear';b.onclick=guard(()=>api('/api/wave/'+(x.slot+1),undefined,'DELETE'));d.append(b);w.append(d)});
     const im=$('imports');im.innerHTML='';S.imports.forEach(f=>im.add(new Option(f,f)))}
   if(!cfgInit){cfgInit=true;$('midich').value=S.config.midi_channel}
+  document.querySelectorAll('.aud').forEach(e=>e.hidden=!!S.config.link);$('linknote').hidden=!S.config.link;
   $('busnote').textContent=S.config.bus
     ?'Audio mode: mixer. MachineModule plays through the audio mixer of push-audio-loopback, so other audio hacks (for example Braids) can play at the same time. The mixer owns the card, so the Audio output list is off. Pick a Channel pair. Live still needs an audio track that listens to this pair: press Create tracks in Live, or set the track up yourself.'
     :'Audio mode: direct. No audio mixer was found, so MachineModule writes to the card itself. Only one audio hack can do this at a time. A newer push-audio-loopback with the audio mixer lets several hacks play together.';

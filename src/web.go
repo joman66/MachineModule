@@ -94,7 +94,7 @@ func (w *webServer) state() map[string]any {
 		"audio":  map[string]any{"ok": ok, "message": msg},
 		"waves":  waves, "waveUsed": used, "waveTotal": total,
 		"imports": append([]string{}, a.st.ImportFiles()...),
-		"config": map[string]any{"pcm_device": cfg.PCMDevice, "channel_offset": a.effectivePair(), "bus": a.busMode.Load(),
+		"config": map[string]any{"pcm_device": cfg.PCMDevice, "channel_offset": a.effectivePair(), "bus": a.busMode.Load(), "link": a.linkMode(),
 			"midi_channel": cfg.MidiChannel},
 	}
 }
@@ -399,6 +399,7 @@ func (w *webServer) routes() http.Handler {
 			"devices": audioout.Devices(devices, cfg.PCMDevice),
 			"pairs":   audioout.Pairs(int(a.channels.Load()), a.effectivePair()),
 			"bus":     a.busMode.Load(),
+			"link":    a.linkMode(),
 		})
 	})
 	mux.HandleFunc("POST /api/live/tracks", func(rw http.ResponseWriter, r *http.Request) {
